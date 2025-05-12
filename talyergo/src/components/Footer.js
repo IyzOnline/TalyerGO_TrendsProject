@@ -1,7 +1,48 @@
+import { Link } from "react-router-dom";
+
 export const Footer = () => {
     return (
         <footer>
-            text
+            <div className="container">
+                <div className="footer-wrapper padding-block-80">
+                    <div className="company-section">
+                        <p className="logo">TalyerGo</p>
+                        <p className="cs-description">Where solutions come easy.</p>
+                    </div>
+                    <div className="nav-contact-section">
+                        <div>
+                            <h3 class="footer-headings">Navigation</h3>
+                            <nav> 
+                                <ul>
+                                    <li><Link to="/">Home</Link></li>
+                                    <li><Link to="/">About</Link></li>
+                                    <li><Link to="/">Shops</Link></li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                        <div>
+                            <h3 class="footer-headings">Contact Information</h3>
+                            <ul>
+                                <li>talyergo@gmail.com</li>
+                                <li>+63-9692499027</li>
+                                <li>Carolina, Naga City.</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="footer-headings">Social Media</h3>
+                            <nav >
+                                <ul>
+                                    <li><Link to="/">Facebook</Link></li>
+                                    <li><Link to="/">Instagram</Link></li>
+                                    <li><Link to="/">Twitter</Link></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 }
