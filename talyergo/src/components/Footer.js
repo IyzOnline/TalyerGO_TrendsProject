@@ -13,7 +13,7 @@ export const Footer = () => {
                         <div>
                             <h3 class="footer-headings">Navigation</h3>
                             <nav> 
-                                <ul>
+                                <ul className="footer-column-items">
                                     <li><Link to="/">Home</Link></li>
                                     <li><Link to="/">About</Link></li>
                                     <li><Link to="/">Shops</Link></li>
@@ -23,7 +23,7 @@ export const Footer = () => {
 
                         <div>
                             <h3 class="footer-headings">Contact Information</h3>
-                            <ul>
+                            <ul className="footer-column-items"> 
                                 <li>talyergo@gmail.com</li>
                                 <li>+63-9692499027</li>
                                 <li>Carolina, Naga City.</li>
@@ -32,8 +32,8 @@ export const Footer = () => {
 
                         <div>
                             <h3 class="footer-headings">Social Media</h3>
-                            <nav >
-                                <ul>
+                            <nav>
+                                <ul className="footer-column-items">
                                     <li><Link to="/">Facebook</Link></li>
                                     <li><Link to="/">Instagram</Link></li>
                                     <li><Link to="/">Twitter</Link></li>
