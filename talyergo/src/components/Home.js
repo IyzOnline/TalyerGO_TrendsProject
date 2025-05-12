@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
+import tempImage from "../images/tempImage.png";
 
 export const Home = () => {
     return (
         <main>
             <section>
-                <div className="hero-container | container padding-block-80">
-                    <div className="hero-wrapper">
-                        <h1 className="main-headings">Find the Best Mechanics<br></br>for your situation</h1>
-                        <button><Link>Get Started</Link></button>
+                    <div className="hero-container | container padding-block-80">
+                            <div class="hero-bg-container"></div>
+                            <div className="hero-wrapper">
+                                <h1 className="main-headings">Find the best mechanics<br></br>for your situation.</h1>
+                                <button><Link>Get Started</Link></button>
+                            </div>
                     </div>
-                </div>
             </section>
-
             <section>
                 <div className="container padding-block-80">
                     <div className="map-wrapper">
@@ -23,38 +24,38 @@ export const Home = () => {
                         <div class="search-wrapper">
                             <aside class="results-wrapper">
                                 <div>
-                                    <h3>Poggers</h3>
+                                    <h3>Pogger Repairs</h3>
                                     {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
-                                    <h3>Poggers</h3>
+                                    <h3>Pogger Repairs</h3>
                                     {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
-                                    <h3>Poggers</h3>
+                                    <h3>Pogger Repairs</h3>
                                     {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
-                                    <h3>Poggers</h3>
+                                    <h3>Pogger Repairs</h3>
                                     {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
-                                    <h3>Poggers</h3>
+                                    <h3>Pogger Repairs</h3>
                                     {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                             </aside> 
                             {/* insert map here */}
-                            <button class="temp-map">Temp Element</button>
+                            <img class="temp-map" src={tempImage} alt="Google Maps"/>
                         </div>
                     </div>
                 </div>
