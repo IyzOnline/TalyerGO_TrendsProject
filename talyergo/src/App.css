@@ -49,11 +49,11 @@
 :root{
   --fs-primary-heading: 4rem;
   --fs-titles: 2rem; 
-  --fs-buttons: 1rem;
+  --fs-buttons: 1.5rem;
   --fs-specifics: 1.5rem;
   --fs-description: 1.25rem;
 
-  --ff-titles: 'League Spartan', sans-serif;
+  --ff-primary: 'League Spartan', sans-serif;
   --ff-general: 'Noi Grotesk Trial';
 
   --fw-bold: 900;
@@ -164,6 +164,14 @@ a {
 button{
   font-family: var(--ff-general);
   font-size: var(--fs-buttons);
+  border: none;
+  border-radius: var(--size-8);
+  padding: var(--size-8) var(--size-16);
+  background-color: var(--clr-primary-400);
+}
+
+button a{
+  color: var(--clr-neutral-100);
 }
 
 /* Primary Heading */
@@ -176,7 +184,7 @@ button{
 }
 
 .primary-header-wrapper > p{
-  font-family: var(--ff-titles);
+  font-family: var(--ff-primary);
   font-size: var(--fs-titles);
   font-weight: var(--fw-bold);
 }
@@ -194,19 +202,22 @@ button{
   gap: 10px;
 }
 
-.ph-buttons > button {
-  border: none;
-  border-radius: 15px;
-  padding: var(--size-8) var(--size-32);
-  background-color: var(--clr-primary-400)
-}
-
-.ph-buttons a{
-  color: white;
-}
-
-
 /* Main */
+
+/* Main - Hero Section */
+
+.hero-wrapper{
+  text-align: center;
+  font-family: var(--ff-primary);
+}
+
+
+
+.hero-wrapper h1{
+  font-size: var(--fs-primary-heading);
+}
+
+/* Main - Map Section */
 
 .search-wrapper{
   display: flex;
