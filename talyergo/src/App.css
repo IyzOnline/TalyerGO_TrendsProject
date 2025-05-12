@@ -105,6 +105,8 @@ ul,
 ol {
   list-style: none;
   padding-inline-start: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 /* Set core root defaults */
@@ -247,6 +249,25 @@ button a{
 .temp-map{
   width: 100%;
 }
+
+/* Footer */
+
+.footer-wrapper{
+  font-family: var(--ff-general);
+  border-top: 1px solid black;
+}
+
+.footer-wrapper, .nav-contact-section{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(var(--size-32), var(--size-64), var(--size-80));
+}
+
+.cs-description{
+  font-size: var(--fs-specifics)
+}
+
 /* Utility Classes */
 
 .container{
@@ -255,6 +276,10 @@ button a{
 
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
+}
+
+.padding-block-32{
+  padding-block: var(--size-32);
 }
 
 .padding-block-80{
@@ -267,8 +292,13 @@ button a{
 }
 
 .logo{
-min-width: 171px;
-font-family: var(--ff-primary);
-font-size: var(--fs-titles);
-font-weight: var(--fw-bold);
+  min-width: 171px;
+  font-family: var(--ff-primary);
+  font-size: var(--fs-titles);
+  font-weight: var(--fw-bold);
+}
+
+.footer-headings{
+  font-family: var(--ff-primary);
+  font-size: var(--fs-description);
 }
