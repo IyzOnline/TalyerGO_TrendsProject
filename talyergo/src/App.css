@@ -259,3 +259,15 @@ button a{
 .padding-block-80{
   padding-block: var(--size-80);
 }
+
+.main-headings{
+  font-family: var(--ff-primary);
+  font-size: var(--fs-primary-heading);
+}
+
+.logo{
+min-width: 171px;
+font-family: var(--ff-primary);
+font-size: var(--fs-titles);
+font-weight: var(--fw-bold);
+}
