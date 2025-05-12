@@ -272,6 +272,16 @@ button a{
   font-size: var(--size-16);
 }
 
+
+.footer-headings{
+  font-family: var(--ff-primary);
+  font-size: var(--fs-description);
+}
+
+.footer-column-items > *{
+  padding-top: var(--size-8);
+}
+
 /* Utility Classes */
 
 .container{
@@ -300,9 +310,4 @@ button a{
   font-family: var(--ff-primary);
   font-size: var(--fs-titles);
   font-weight: var(--fw-bold);
-}
-
-.footer-headings{
-  font-family: var(--ff-primary);
-  font-size: var(--fs-description);
 }
