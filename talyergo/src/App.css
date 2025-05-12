@@ -63,7 +63,8 @@
   --size-8: 0.5rem;
   --size-16: 1rem;
   --size-32: 2rem;
-  --size-64: 4rem; 
+  --size-64: 4rem;
+  --size-80: 5rem;
 }
 
 /* // https://piccalil.li/blog/a-modern-css-reset */
@@ -184,7 +185,40 @@ button{
 }
 
 
+/* Main */
 
+.search-wrapper{
+  display: flex;
+  gap: clamp(var(--size-8), var(--size-16), var(--size-32));
+}
+
+:where(.map-wrapper>:not(:first-child)){
+  padding-top: var(--size-16);
+}
+
+.btn-map-wrapper{
+  display: flex;
+  gap: clamp(var(--size-8), var(--size-16), var(--size-32));
+}
+
+.btn-map-wrapper > button{
+  padding: var(--size-16);
+}
+
+.search-wrapper{
+  display: flex;
+  gap: clamp(var(--size-8), var(--size-16), var(--size-32));
+}
+
+.results-wrapper{
+  border: 1px solid black;
+  padding: var(--size-16);
+  min-width: clamp(var(--size-8), var(--size-16), var(--size-32));
+}
+
+.temp-map{
+  width: 100%;
+}
 /* Utility Classes */
 
 .container{
@@ -193,4 +227,8 @@ button{
 
   width: min(var(--max-width), 100% - (var(--padding) * 2));
   margin-inline: auto;
+}
+
+.padding-block-80{
+  padding-block: var(--size-80);
 }
