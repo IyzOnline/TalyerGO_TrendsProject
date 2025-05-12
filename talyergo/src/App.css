@@ -194,6 +194,17 @@ button{
   gap: 10px;
 }
 
+.ph-buttons > button {
+  border: none;
+  border-radius: 15px;
+  padding: var(--size-8) var(--size-32);
+  background-color: var(--clr-primary-400)
+}
+
+.ph-buttons a{
+  color: white;
+}
+
 
 /* Main */
 
