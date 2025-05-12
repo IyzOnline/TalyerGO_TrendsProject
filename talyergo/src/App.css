@@ -47,9 +47,9 @@
 /* custom attributes */
 
 :root{
-  --fs-primary-heading: 4rem;
+  --fs-primary-heading: 3rem;
   --fs-titles: 2rem; 
-  --fs-buttons: 1.5rem;
+  --fs-buttons: 1rem;
   --fs-specifics: 1.5rem;
   --fs-description: 1.25rem;
 
@@ -183,12 +183,6 @@ button a{
   font-family: var(--ff-general);
 }
 
-.primary-header-wrapper > p{
-  font-family: var(--ff-primary);
-  font-size: var(--fs-titles);
-  font-weight: var(--fw-bold);
-}
-
 .ph-nav{
   display: flex;
   justify-content: center;
@@ -208,16 +202,17 @@ button a{
 
 .hero-wrapper{
   text-align: center;
-  font-family: var(--ff-primary);
-}
-
-
-
-.hero-wrapper h1{
-  font-size: var(--fs-primary-heading);
 }
 
 /* Main - Map Section */
+
+.map-heading{
+  max-width: 20ch;
+}
+
+.map-heading-italic{
+  font-style: italic;
+}
 
 .search-wrapper{
   display: flex;
@@ -243,7 +238,7 @@ button a{
 }
 
 .results-wrapper{
-  border: 1px solid black;
+  border: 1px solid var(--clr-neutral-900);
   padding: var(--size-16);
   min-width: clamp(var(--size-8), var(--size-16), var(--size-32));
 }
