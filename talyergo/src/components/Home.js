@@ -4,7 +4,7 @@ export const Home = () => {
     return (
         <main>
             <section>
-                <div className="container | padding-block-80">
+                <div className="hero-container | container padding-block-80">
                     <div className="hero-wrapper">
                         <h1 className="main-headings">Find the Best Mechanics<br></br>for your situation</h1>
                         <button><Link>Get Started</Link></button>
@@ -13,7 +13,7 @@ export const Home = () => {
             </section>
 
             <section>
-                <div className="container | padding-block-80">
+                <div className="container padding-block-80">
                     <div className="map-wrapper">
                         <h2 className="map-heading | main-headings">Need to find the <span className="map-heading-italic">nearest</span> repair shops now?</h2>
                         <div class="btn-map-wrapper">
