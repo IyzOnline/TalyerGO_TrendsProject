@@ -5,7 +5,7 @@ export const Home = () => {
     return (
         <main>
             <section>
-                    <div className="hero-container | container padding-block-80">
+                    <div className="h1-container container padding-block-80">
                             <div class="hero-bg-container"></div>
                             <div className="hero-wrapper">
                                 <h1 className="main-headings">Find the best mechanics<br></br>for your situation.</h1>
