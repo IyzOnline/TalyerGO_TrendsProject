@@ -14,7 +14,7 @@ export const LogIn = () => {
                             <h1>Log In</h1>
                             <input type="text" placeholder="Username / Email"/>
                             <input type="password" placeholder="Password"/>
-                            <div className="submmit-wrapper">
+                            <div className="submit-wrapper">
                                 <button className="log-in-submit">LOG IN</button>
                                 <div class="bottom-options">
                                     <p>Forgot Password</p>
