@@ -1,5 +1,8 @@
 import { Link } from "react-router-dom";
-import cbros from "../images/cbros.png"
+import cbros from "../images/cbros.png";
+import { StarEmpty } from "../svgs/StarEmpty";
+import { StarFilled } from "../svgs/StarFilled";
+import { StarHalf } from "../svgs/StarHalf";
 
 export const Shops = () => {
    return (
@@ -19,63 +22,195 @@ export const Shops = () => {
                 <section className="shops-profile-section | container padding-block-80">
                     <div className="shops-profilie-wrapper">
                         <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>C-Bros Genuine Autoparts & Accessories, Inc</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt="image"/>
-                            <h3>CARniguan Auto Services</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>Fullyfix Auto Service</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
+                            <img src={cbros} alt="Car Garage"/>
                             <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
                             <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
                         </div>
                         <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>C-Bros Genuine Autoparts & Accessories, Inc</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt="image"/>
-                            <h3>CARniguan Auto Services</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>Fullyfix Auto Service</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
+                            <img src={cbros} alt="Car Garage"/>
                             <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
                             <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
                         </div>
                         <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>C-Bros Genuine Autoparts & Accessories, Inc</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt="image"/>
-                            <h3>CARniguan Auto Services</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
-                            <h3>Fullyfix Auto Service</h3>
-                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
-                        </div>
-                        <div className="shops-profile">
-                            <img src={cbros} alt=""/>
+                            <img src={cbros} alt="Car Garage"/>
                             <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
+                            <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
+                        </div>
+                        <div className="shops-profile">
+                            <img src={cbros} alt="Car Garage"/>
+                            <h3>JL Habana Tire Supply & Auto Repair Shop</h3>
+                            <div className="ratings-wrapper">
+                                <p>4.5</p>
+                                <div className="star-wrapper">
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarFilled />
+                                    <StarHalf/>
+                                </div>
+                                <p>(399)</p>    
+                            </div> 
                             <p>Diversion Road Barangay, Naga, 4400 Camarines Sur</p>
                         </div>
                     </div>
