@@ -337,12 +337,20 @@ button a{
 }
 
 .shops-profile{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   text-align: left;
   box-shadow: 0 1em 1em -1em rgba(0, 0, 0, 0.534);
   background-color: var(--clr-neutral-100);
   border-radius: var(--size-16);
+  width: 18rem;
+}
+
+.shops-profile img{
   height: auto;
   width: 18rem;
+  overflow: hidden;
 }
 
 .shops-profile > img{
@@ -352,6 +360,17 @@ button a{
 :where(.shops-profile>:not(:first-child)){
   padding-inline: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.ratings-wrapper{
+  display: flex;
+  align-items: center;
+  gap: var(--size-8);
+}
+
+.star-wrapper{
+  display: flex;
+  align-items: center;
 }
 
 /* Footer */
@@ -433,4 +452,9 @@ button a{
   height: 100%;
   background-color: var(--clr-primary-400);
   opacity: 0.7;
+}
+
+.icons{
+  height: 1.5rem;
+  width: auto;
 }
