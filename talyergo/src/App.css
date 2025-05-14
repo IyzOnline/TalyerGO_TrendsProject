@@ -75,6 +75,8 @@
 
   --clr-neutral-900: hsl(232, 12%, 13%);
   --clr-neutral-100: hsl(0, 0%, 100%);
+
+  --gap-default: clamp(var(--size-8), var(--size-16), var(--size-32));
 }
 
 /* // https://piccalil.li/blog/a-modern-css-reset */
@@ -286,6 +288,10 @@ button a{
 
 /* Shops - Heading */
 
+.shops-wrapper{
+  font-family: var(--ff-general);
+}
+
 .shops-bg-container{
   position: absolute;
   top: 0;
@@ -300,14 +306,52 @@ button a{
   text-align: center;
 }
 
-.shops-heading-wrapper h1{
+:where(.shops-heading-wrapper>:not(:first-child)){
   position: relative;
   z-index: 1;
   color: white;
 }
 
-.shops-wrapper{
+.shops-search-bar{
+  min-width: clamp(5em, 60vw, 50em);
+  border: none;
+  padding: 1rem;
+  border-radius: 1.5rem;
+}
+
+.shops-profile-search{
   text-align: center;
+  overflow: hidden;
+}
+
+.shops-profile-section{
+  background-color:hsla(0, 0%, 79%, 0.137);
+}
+
+.shops-profilie-wrapper{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding-inline: 1.25rem;
+  gap: clamp(var(--size-8), 3vh, var(--size-80));
+}
+
+.shops-profile{
+  text-align: left;
+  box-shadow: 0 1em 1em -1em rgba(0, 0, 0, 0.534);
+  background-color: var(--clr-neutral-100);
+  border-radius: var(--size-16);
+  height: auto;
+  width: 18rem;
+}
+
+.shops-profile > img{
+  margin-bottom: 0.5rem
+}
+
+:where(.shops-profile>:not(:first-child)){
+  padding-inline: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 /* Footer */
@@ -354,6 +398,10 @@ button a{
 
 .padding-block-32{
   padding-block: var(--size-32);
+}
+
+.margin-block-32{
+  margin-block: var(--size-32);
 }
 
 .padding-block-80{
