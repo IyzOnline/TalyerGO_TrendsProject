@@ -3,7 +3,7 @@
 // <!-- Uploaded to: SVG Repo, www.svgrepo.com, Transformed by: SVG Repo Mixer Tools -->
 export const StarFilled = () => {
     return (
-        <svg fill="#ffdd00" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffdd00">
+        <svg className="icons" fill="#ffdd00" width="800px" height="800px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" stroke="#ffdd00">
 
         <g id="SVGRepo_bgCarrier" stroke-width="0"/>
 
