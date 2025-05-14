@@ -48,7 +48,8 @@
 
 :root{
   --fs-primary-heading: 3rem;
-  --fs-titles: 2rem; 
+  --fs-titles: 2rem;
+  --fs-large-titles: 4rem; 
   --fs-buttons: 1rem;
   --fs-specifics: 1.5rem;
   --fs-description: 1.25rem;
@@ -62,6 +63,7 @@
 
   --size-8: 0.5rem;
   --size-16: 1rem;
+  --size-24: 1.5rem;
   --size-32: 2rem;
   --size-64: 4rem;
   --size-80: 5rem;
@@ -373,6 +375,94 @@ button a{
   align-items: center;
 }
 
+/* Log-In */
+
+.log-in-wrapper{
+  position: relative;
+  overflow: hidden;
+}
+
+.log-in-bg-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('images/log-in-photo.png');
+  background-size: cover;
+}
+
+.log-in-logo-wrapper{
+  text-align: center;
+  color: var(--clr-neutral-100);
+  text-shadow: 1px 1px 1px black;
+}
+
+:where(.log-in-logo-wrapper>:not(:first-child)){
+  font-family: var(--ff-general);
+  font-size: var(--fs-description);
+  font-style: italic;
+  font-weight: 500;
+}
+
+.log-in-content-wrapper{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5rem;
+  flex-wrap: wrap;
+  margin-inline: 2rem;
+}
+
+.log-in-box-wrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--size-24);
+  background-color: var(--clr-neutral-100);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1em 1em -1em black;
+  font-size: var(--size-16);
+  font-family: var(--ff-general);
+}
+
+.log-in-box-wrapper h1{
+  font-size: var(--size-24);
+  font-family: var(--ff-primary);
+}
+
+.log-in-box-wrapper input{
+  padding: 0.2rem 0.6rem;
+  font-size: var(--size)
+}
+
+.submmit-wrapper{
+  width: 100%;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.log-in-submit{
+  width: 100%;
+  border: none;
+  color: var(--clr-neutral-100);
+}
+
+
+.bottom-options{
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.5rem;
+  font-size: 0.6rem;
+  color: var(--clr-primary-400);
+}
+
+
+
 /* Footer */
 
 .footer-wrapper{
@@ -415,12 +505,12 @@ button a{
   margin-inline: auto;
 }
 
-.padding-block-32{
-  padding-block: var(--size-32);
-}
-
 .margin-block-32{
   margin-block: var(--size-32);
+}
+
+.padding-block-32{
+  padding-block: var(--size-32);
 }
 
 .padding-block-80{
@@ -436,6 +526,12 @@ button a{
   min-width: 171px;
   font-family: var(--ff-primary);
   font-size: var(--fs-titles);
+  font-weight: var(--fw-bold);
+}
+
+.logo-large{
+  font-family: var(--ff-primary);
+  font-size: var(--fs-large-titles);
   font-weight: var(--fw-bold);
 }
 
@@ -457,4 +553,8 @@ button a{
 .icons{
   height: 1.5rem;
   width: auto;
+}
+
+.clr-accent-300{
+  color: var(--clr-accent-300);
 }
