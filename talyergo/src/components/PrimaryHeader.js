@@ -14,8 +14,8 @@ export const PrimaryHeader = () => {
                         </ul>
                     </nav>
                     <div className="ph-buttons">
-                        <button><Link>Sign up</Link></button>
-                        <button><Link>Log in</Link></button>
+                        <button><Link to="/sign-up">Sign up</Link></button>
+                        <button><Link to="/log-in">Log in</Link></button>
                     </div>
                 </div>
             </div>
