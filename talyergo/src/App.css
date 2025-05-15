@@ -377,12 +377,12 @@ button a{
 
 /* Log-In */
 
-.log-in-wrapper{
+.LS-wrapper{
   position: relative;
   overflow: hidden;
 }
 
-.log-in-bg-container{
+.LS-bg-container{
   position: absolute;
   top: 0;
   left: 0;
@@ -392,20 +392,20 @@ button a{
   background-size: cover;
 }
 
-.log-in-logo-wrapper{
+.LS-logo-wrapper{
   text-align: center;
   color: var(--clr-neutral-100);
   text-shadow: 1px 1px 1px black;
 }
 
-:where(.log-in-logo-wrapper>:not(:first-child)){
+:where(.LS-logo-wrapper>:not(:first-child)){
   font-family: var(--ff-general);
   font-size: var(--fs-description);
   font-style: italic;
   font-weight: 500;
 }
 
-.log-in-content-wrapper{
+.LS-content-wrapper{
   position: relative;
   z-index: 1;
   display: flex;
@@ -417,36 +417,36 @@ button a{
   margin-inline: 2rem;
 }
 
-.log-in-box-wrapper{
+.LS-box-wrapper{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--size-24);
   background-color: var(--clr-neutral-100);
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   border-radius: 1rem;
   box-shadow: 0 1em 1em -1em black;
   font-size: var(--size-16);
   font-family: var(--ff-general);
 }
 
-.log-in-box-wrapper h1{
+.LS-box-wrapper h1{
   font-size: var(--size-24);
   font-family: var(--ff-primary);
 }
 
-.log-in-box-wrapper input{
+.LS-box-wrapper input{
   padding: 0.2rem 0.6rem;
   font-size: var(--size)
 }
 
-.submmit-wrapper{
+.submit-wrapper{
   width: 100%;
   text-align: center;
   flex-grow: 1;
 }
 
-.log-in-submit{
+.LS-submit{
   width: 100%;
   border: none;
   color: var(--clr-neutral-100);
