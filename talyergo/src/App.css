@@ -253,11 +253,6 @@ button a{
   font-style: italic;
 }
 
-.search-wrapper{
-  display: flex;
-  gap: clamp(var(--size-8), var(--size-16), var(--size-32));
-}
-
 :where(.map-wrapper>:not(:first-child)){
   padding-top: var(--size-16);
 }
@@ -269,11 +264,6 @@ button a{
 
 .btn-map-wrapper > button{
   padding: var(--size-16);
-}
-
-.search-wrapper{
-  display: flex;
-  gap: clamp(var(--size-8), var(--size-16), var(--size-32));
 }
 
 .results-wrapper{

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import tempImage from "../images/tempImage.png";
+import { Map } from "./Map";
 
 export const Home = () => {
     return (
@@ -22,40 +23,36 @@ export const Home = () => {
                             <button><Link>Sort By</Link></button>
                         </div>
                         <div class="search-wrapper">
-                            <aside class="results-wrapper">
+                            {/* <aside class="results-wrapper">
                                 <div>
                                     <h3>Pogger Repairs</h3>
-                                    {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
                                     <h3>Pogger Repairs</h3>
-                                    {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
                                     <h3>Pogger Repairs</h3>
-                                    {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
                                 <div>
                                     <h3>Pogger Repairs</h3>
-                                    {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
-                                <div>
+                                 <div>
                                     <h3>Pogger Repairs</h3>
-                                    {/* <img /> */}
                                     <p>San Mateo St., Barangay Pacol</p>
                                 </div>
                                 <hr/>
-                            </aside> 
+                            </aside>  */}
                             {/* insert map here */}
-                            <img class="temp-map" src={tempImage} alt="Google Maps"/>
+                            {/* <img class="temp-map" src={tempImage} alt="Google Maps"/> */}
+                            <Map />
                         </div>
                     </div>
                 </div>
