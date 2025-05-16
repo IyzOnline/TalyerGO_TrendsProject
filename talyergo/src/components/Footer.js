@@ -15,8 +15,8 @@ export const Footer = () => {
                             <nav> 
                                 <ul className="footer-column-items">
                                     <li><Link to="/">Home</Link></li>
-                                    <li><Link to="/">About</Link></li>
-                                    <li><Link to="/">Shops</Link></li>
+                                    <li><Link to="/about">About</Link></li>
+                                    <li><Link to="/shops">Shops</Link></li>
                                 </ul>
                             </nav>
                         </div>

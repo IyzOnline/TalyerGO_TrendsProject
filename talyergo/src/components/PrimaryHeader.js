@@ -9,7 +9,7 @@ export const PrimaryHeader = () => {
                     <nav>
                         <ul className="ph-nav" aria-label="Primary Navigation"> 
                             <li><Link to="/">Home</Link></li>
-                            <li><Link to="/">About</Link></li>
+                            <li><Link to="/about">About</Link></li>
                             <li><Link to="/shops">Shops</Link></li>
                         </ul>
                     </nav>

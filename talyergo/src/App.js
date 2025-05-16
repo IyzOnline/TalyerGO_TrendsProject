@@ -7,6 +7,7 @@ import { Shops } from './components/Shops.js';
 import { LogIn } from './components/LogIn.js';
 import { SignUp } from './components/SignUp.js';
 import { Profile } from './components/Profile.js';
+import { About } from './components/About.js';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <PrimaryHeader />
         <Routes>
           <Route path="/" element={<Home />}/>
+          <Route path="/about" element={<About />}/>
           <Route path="/shops" element={<Shops />}/>
           <Route path="/log-in" element={<LogIn />}/>
           <Route path="/sign-up" element={<SignUp />}/>

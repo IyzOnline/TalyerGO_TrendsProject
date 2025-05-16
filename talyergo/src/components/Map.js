@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 
+//this is a temporary solution to be deleted later.
 import cbros from "../images/repairShops/cbros.png";
 import motech from "../images/repairShops/motech.png";
 import abs from "../images/repairShops/abs.png";
@@ -22,6 +23,7 @@ import nl from "../images/repairShops/nl.png";
 import onyok from "../images/repairShops/onyok.png";
 import shell360 from "../images/repairShops/shell360.png";
 import walls from "../images/repairShops/walls.png";
+//this is a temporary solution to be deleted later.
 
 const shops = [
     {name: "C-Bros Genuine Autoparts & Accessories, Inc", address: "Diversion Road Barangay, Naga, 4400 Camarines Sur", lat: 13.616506316616706, lng: 123.18848629211855, image: cbros, path: "/profile/cbros"},
@@ -100,6 +102,7 @@ export const Map = () => {
             const popUpImage = document.createElement('img');
             popUpImage.src = shop.image;
             popUpImage.alt = `${shop.name} appearance`;
+            popUpImage.classList.add("shop-map-image");
 
             const popUpAddress = document.createElement('span');
             popUpAddress.textContent = shop.address;
