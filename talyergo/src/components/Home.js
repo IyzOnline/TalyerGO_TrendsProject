@@ -1,8 +1,13 @@
 import { Link } from "react-router-dom";
-import tempImage from "../images/tempImage.png";
 import { Map } from "./Map";
+import { useShops } from "./ShopsContext";
+import { StarEmpty } from "../svgs/StarEmpty";
+import { StarFilled } from "../svgs/StarFilled";
+import { StarHalf } from "../svgs/StarHalf";
 
 export const Home = () => {
+    const shops = useShops();
+
     return (
         <main>
             <section>
@@ -23,36 +28,32 @@ export const Home = () => {
                             <button><Link>Sort By</Link></button>
                         </div>
                         <div class="search-wrapper">
-                            {/* <aside class="results-wrapper">
-                                <div>
-                                    <h3>Pogger Repairs</h3>
-                                    <p>San Mateo St., Barangay Pacol</p>
-                                </div>
-                                <hr/>
-                                <div>
-                                    <h3>Pogger Repairs</h3>
-                                    <p>San Mateo St., Barangay Pacol</p>
-                                </div>
-                                <hr/>
-                                <div>
-                                    <h3>Pogger Repairs</h3>
-                                    <p>San Mateo St., Barangay Pacol</p>
-                                </div>
-                                <hr/>
-                                <div>
-                                    <h3>Pogger Repairs</h3>
-                                    <p>San Mateo St., Barangay Pacol</p>
-                                </div>
-                                <hr/>
-                                 <div>
-                                    <h3>Pogger Repairs</h3>
-                                    <p>San Mateo St., Barangay Pacol</p>
-                                </div>
-                                <hr/>
-                            </aside>  */}
-                            {/* insert map here */}
-                            {/* <img class="temp-map" src={tempImage} alt="Google Maps"/> */}
+
+                            <aside class="results-wrapper">
+                                {shops.map((shop) => {
+                                    return (
+                                    <div key={shop.name} className="results-shops">
+                                        <h3>{shop.name}</h3>
+                                        <div className="ratings-wrapper">
+                                            <p>4.5</p>
+                                            <div className="star-wrapper">
+                                                <StarFilled />
+                                                <StarFilled />
+                                                <StarFilled />
+                                                <StarFilled />
+                                                <StarHalf/>
+                                            </div>
+                                            <p>(399)</p>    
+                                        </div> 
+                                        <span>{shop.address}</span>
+                                    </div>
+                                    );
+                                })}
+                                
+                            </aside>
+
                             <Map />
+                            
                         </div>
                     </div>
                 </div>
