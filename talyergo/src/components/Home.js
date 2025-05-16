@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Map } from "./Map";
+import { useRef } from "react";
 import { useShops } from "./ShopsContext";
 import { StarEmpty } from "../svgs/StarEmpty";
 import { StarFilled } from "../svgs/StarFilled";
@@ -7,6 +8,18 @@ import { StarHalf } from "../svgs/StarHalf";
 
 export const Home = () => {
     const shops = useShops();
+    const mapHoverHandler = useRef(null);
+    const changeToPath = useNavigate();
+    
+    const navigation = (path) => {
+        changeToPath(path);
+    };
+
+    const handleMouseEnter = (lat, lng, zoom) => {
+        if (mapHoverHandler.current) {
+            mapHoverHandler.current(lat, lng, zoom);
+        }
+    };
 
     return (
         <main>
@@ -32,7 +45,9 @@ export const Home = () => {
                             <aside class="results-wrapper">
                                 {shops.map((shop) => {
                                     return (
-                                    <div key={shop.name} className="results-shops">
+                                    <div key={shop.name} className="results-shops" 
+                                    onMouseEnter={() => handleMouseEnter(shop.lat, shop.lng, 16)}
+                                    onClick={() => navigation(shop.path)}>
                                         <h3>{shop.name}</h3>
                                         <div className="ratings-wrapper">
                                             <p>4.5</p>
@@ -52,7 +67,7 @@ export const Home = () => {
                                 
                             </aside>
 
-                            <Map />
+                            <Map onShopHover={mapHoverHandler}/>
                             
                         </div>
                     </div>

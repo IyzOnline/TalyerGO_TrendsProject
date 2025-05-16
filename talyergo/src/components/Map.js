@@ -8,9 +8,10 @@ import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 import { useShops } from './ShopsContext';
 
-export const Map = () => {
+export const Map = ({ onShopHover }) => {
     const shops = useShops();
     const mapReference = useRef(null);
+    const mapInstance = useRef(null);
     const changeToPath = useNavigate();
 
     const navigation = (path) => {
@@ -34,6 +35,8 @@ export const Map = () => {
             maxBounds: bounds,
             maxBoundsViscosity: 0.7
         }).setView([13.629, 123.185], 12);
+
+        mapInstance.current = map;
 
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -103,13 +106,19 @@ export const Map = () => {
         updateMarkerVisibility();
         map.on('zoomend', updateMarkerVisibility);
 
+        const zoomToShop = (lat, lng, zoom) => {
+            map.setView([lat, lng], zoom);
+        };
+
+        onShopHover.current = zoomToShop;
+
         return () => {
             if(map){
                 map.remove();
             }
         };
 
-    }, [mapReference]);
+    }, [shops, onShopHover, mapReference]);
 
     return <div ref={mapReference} style={{ width: '1110px', height: '500px'}}/>
 }

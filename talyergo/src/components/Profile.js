@@ -56,10 +56,10 @@ export const Profile = () => {
             <section>
                 <div className="container">
                     <div className="shop-content | margin-block-32">
-                        <div className="shop-info">
-
-                        </div>
                         <Reviews />
+                        <div className="shop-info">
+                            
+                        </div>
                     </div>
                 </div>
             </section>
