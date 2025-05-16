@@ -1,26 +1,44 @@
 import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
+import "../App.css"
+import orangemarker from '../images/orangemarker.png';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
 
+import cbros from "../images/repairShops/cbros.png";
+import motech from "../images/repairShops/motech.png";
+import abs from "../images/repairShops/abs.png";
+import ajf from "../images/repairShops/ajf.png";
+import carcido from "../images/repairShops/carcido.png";
+import carniguan from "../images/repairShops/carniguan.png";
+import cartown from "../images/repairShops/cartown.png";
+import coachgene from "../images/repairShops/coachgene.png";
+import fullyfix from "../images/repairShops/fullyfix.png";
+import jlhabana from "../images/repairShops/jlhabana.png";
+import nagasouthern from "../images/repairShops/nagasouthern.png";
+import nl from "../images/repairShops/nl.png";
+import onyok from "../images/repairShops/onyok.png";
+import shell360 from "../images/repairShops/shell360.png";
+import walls from "../images/repairShops/walls.png";
+
 const shops = [
-    { name: "Sam's Motor Shop", phone: "0948 949 9444", address: "Zone 4, Concepcion Grande, Naga City", lat: 13.621, lng: 123.183, path: '/profile'},
-    { name: "PRANES Auto Repair Shop", address: "Dover Street, City Heights Subdivision, Naga City", lat: 13.622, lng: 123.193, path: '/profile'},
-    { name: "St. Domingo Car Repair Shop", phone: "0918 944 8473", address: "Diversion Road, Naga City", lat: 13.625, lng: 123.205, path: '/profile'},
-    { name: "JL Habana Tire Supply & Auto Repair Shop", phone: "0963 021 4623", address: "Phil-pan, Maharlika Highway, Naga City", lat: 13.619, lng: 123.181, path: '/profile'},
-    { name: "F1 Alliance Car Care Center", phone: "0949 815 5188", address: "Dr 5 LF Bldg2, Naga City", lat: 13.628, lng: 123.195, path: '/profile'},
-    { name: "Ongskie Auto Supply", phone: "(054) 473 2818", address: "Roxas Ave, Naga City", lat: 13.619, lng: 123.186, path: '/profile'},
-    { name: "Lass Automotive Corporation", phone: "(054) 881 6488", address: "39, Naga City", lat: 13.620, lng: 123.190, path: '/profile'},
-    { name: "Nosol Tire Supply", phone: "0908 896 8322", address: "Zone 1 Concepcion Grande, Naga City", lat: 13.618, lng: 123.180, path: '/profile'},
-    { name: "Motech - Naga", phone: "0918 272 0463", address: "4400 Roxas Ave, Naga City", lat: 13.622, lng: 123.184, path: '/profile'},
-    { name: "Aguila Glass - Naga", phone: "(054) 811 6019", address: "Door C, Benmar Bldg. Concepcion Grande, Naga City", lat: 13.617, lng: 123.179, path: '/profile'},
-    { name: "Castrol Car Workshop - JOEL TIRE CAR CHECK CENTER", phone: "0910 644 1751", address: "Diversion Road, Pan-Philippine Hwy, Naga City", lat: 13.624, lng: 123.207, path: '/profile'},
-    { name: "Luztech Automotives", phone: "0919 435 2284", address: "Balatas Rd, Naga City", lat: 13.611, lng: 123.184, path: '/profile'},
-    { name: "KYX AUTO Repair Shop", phone: "0918 908 9681", address: "Sister Therese, Diversion Road, Naga City", lat: 13.627, lng: 123.200, path: '/profile'},
-    { name: "Bong Auto Repair Shop", phone: "0910 122 8851", address: "Concepcion Pequeña, Naga City", lat: 13.614, lng: 123.190, path: '/profile'},
-    { name: "HD-TECH Electronics & Aircon Service Center", phone: "+6354 472-2902", address: "Door 1, PLDC Building, Diversion Road, Naga City", lat: 13.629, lng: 123.206, path: '/profile'},
+    {name: "C-Bros Genuine Autoparts & Accessories, Inc", address: "Diversion Road Barangay, Naga, 4400 Camarines Sur", lat: 13.616506316616706, lng: 123.18848629211855, image: cbros, path: "/profile/cbros"},
+    {name: "Motech - Naga", address: "4400 Roxas Ave, Naga, 4400 Camarines Sur", lat: 13.620279825462703, lng: 123.20137956829036, image: motech, path: "/profile/motech"},
+    {name: "Wall's Car Aircon Parts and Services", address: "Door 12, PLDC Bldg, Diversion Road, Roxas Ave, Naga, Camarines Sur", lat: 13.618377200662785, lng: 123.19712296374875 , image: walls, path: "/profile/walls"},
+    {name: "Fullyfix Auto Service", address: "Z-1 Panganiban Dr, Brgy. Triangulo, Naga, 4400 Camarines Sur", lat: 13.622257954284809 , lng: 123.19409859575875, image: fullyfix, path: "/profile/fullyfix"},
+    {name: "Shell 360 Autoworx Panganiban", address: "J5FQ+7F2, Panganiban Dr, Naga, 4400 Camarines Sur", lat: 13.6232889087574, lng: 123.18850415957262, image: shell360, path: "/profile/shell360"},
+    {name: "AJF Auto Repair Shop", address: "Salvacion street, Mabolo-Camaligan-Gainza Rd, Naga, 4400 Camarines Sur", lat: 13.615260067890036, lng: 123.17430931094292, image: ajf, path: "/profile/ajf"},
+    {name: "Car Town Auto Shop", address: "53 Jacob, Naga, 4400 Camarines Sur", lat: 13.634639219551847, lng: 123.19136631178144 , image: cartown, path: "/profile/cartown"},
+    {name: "CARniguan Auto Services", address: "3 San Sebastian St, Naga, 4400 Camarines Sur", lat: 13.62433531403645, lng: 123.19522146357924, image: carniguan, path: "/profile/carniguan"},
+    {name: "JL Habana Tire Supply & Auto Repair Shop", address: "Pan-philippine, 1 1, Naga, 4400 Camarines Sur", lat: 13.623346053631177, lng: 123.20820496796051, image: jlhabana, path: "/profile/jlhabana"},
+    {name: "Coachgene Tires & Auto Repair Shop", address: "Con. Pequeña, 4400 Naga City, Philippines, Naga City, Philippines", lat: 13.621928973775246, lng: 123.2022490651836, image: coachgene, path: "/profile/coachgene"},
+    {name: "Carcido Automotor Center", address: "40 Magsaysay Ave, Naga, 4400 Camarines Sur", lat: 13.624519834304605, lng: 123.20159803808114, image: carcido, path: "/profile/carcio"},
+    {name: "ABS Mufflers & Headers and Exhaust System", address: "Zone 2 1, Naga, 4400 Camarines Sur", lat: 13.621758196272166, lng: 123.20730596745132, image: abs, path: "/profile/abs"},
+    {name: "Naga Southern Auto Supply", address: "FEDMCSI Building, Panganiban Dr, Barangay Concepcion Pequeña, Naga, 4400 Camarines Sur", lat: 13.621119668475943, lng: 123.2000057150795, image: nagasouthern, path: "/profile/nagasouthern"},
+    {name: "Onyok Auto Repair Shop", address: "J59V+RH3 Brgy, Waling-waling St, Naga, Camarines Sur", lat: 13.620603397495811, lng: 123.19408804096977, image: onyok, path: "/profile/onyok"},
+    {name: "NL Auto Repair Shop & Tire Supply", address: "Juan Q. Miranda Ave., Concepcion Pequeña, Naga City.", lat: 13.62216772808348, lng: 123.21937531009537, image: nl, path: "/profile/nl"}
 ];
 
 export const Map = () => {
@@ -34,7 +52,7 @@ export const Map = () => {
     useEffect(() => {
         if(!mapReference.current) return;
 
-        const minZoom = 12;
+        const minZoom = 14;
         const maxZoom = 17;
         
         const bounds = L.latLngBounds(
@@ -55,32 +73,66 @@ export const Map = () => {
             maxZoom: maxZoom
         }).addTo(map);
 
+        const markers = [];
+
         shops.forEach(shop => {
 
-            // const markerIcon = L.divIcon({
-            //     className: 'map-marker',
-            //     html: `<div class="map-marker-icon">
-            //                 <h3></h3>
-            //                 <img src=
-            //             </div>`
-            // });
+            const markerIcon = L.divIcon({
+                className: 'map-marker',
+                html: `<div class="marker-content leaflet-marker-icon leaflet-zoom-animated leaflet-interactive">
+                            <p class="marker-text">${shop.name}</p>   
+                            <img class="orangemarker" src="${orangemarker}" alt="${shop.name} icon" />
+                        </div>`,
+                iconAnchor: [165, 60],
+                popUpAnchor: [0, -50]
+            });
             
-            const shopMarker = L.marker([shop.lat, shop.lng]).addTo(map)
+            // const tempMarker = L.marker([shop.lat, shop.lng]).addTo(map);
+            const shopMarker = L.marker([shop.lat, shop.lng], {icon : markerIcon}).addTo(map)
+            markers.push(shopMarker);
+            
             const popUpContent = document.createElement('div');
+            popUpContent.classList.add("pop-up-content");
+
             const popUpName = document.createElement('h2');
             popUpName.textContent = shop.name;
-            const popUpAddress = document.createElement('p');
+
+            const popUpImage = document.createElement('img');
+            popUpImage.src = shop.image;
+            popUpImage.alt = `${shop.name} appearance`;
+
+            const popUpAddress = document.createElement('span');
             popUpAddress.textContent = shop.address;
 
+            popUpContent.appendChild(popUpImage);
             popUpContent.appendChild(popUpName);
             popUpContent.appendChild(popUpAddress);
 
             popUpContent.addEventListener('click', () => {
                 navigation(shop.path); 
             })
+            
+            // tempMarker.bindPopup(popUpContent, {offset: [0, -50]});
+            shopMarker.bindPopup(popUpContent, {offset: [0, -50]});
+        });
 
-            shopMarker.bindPopup(popUpContent);
-        }); 
+        const updateMarkerVisibility = () => {
+            const currentZoom = map.getZoom();
+            markers.forEach(marker => {
+                const markerContent = marker._icon.querySelector('.marker-content');
+                if (markerContent) {
+                    if (currentZoom >= 16) {
+                        markerContent.classList.add('show-text');
+                    } else {
+                        markerContent.classList.remove('show-text');
+                    }
+                }
+            });
+        };
+
+        // Initial call
+        updateMarkerVisibility();
+        map.on('zoomend', updateMarkerVisibility);
 
         return () => {
             if(map){
@@ -88,7 +140,7 @@ export const Map = () => {
             }
         };
 
-    }, []);
+    }, [mapReference]);
 
     return <div ref={mapReference} style={{ width: '1110px', height: '500px'}}/>
 }
