@@ -551,6 +551,8 @@ button a{
   padding: 2rem 3rem;
   border-bottom: 1px solid var(--clr-primary-400);
   background-color: var(--clr-primary-400);
+  background-image: url(images/bg-simplify-section-desktop.svg);
+  background-position: center;
   color: white;
   font-family: var(--ff-general);
   font-size: 0.9rem;

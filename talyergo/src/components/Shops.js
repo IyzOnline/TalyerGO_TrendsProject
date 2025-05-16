@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import cbros from "../images/cbros.png";
 import { StarEmpty } from "../svgs/StarEmpty";
 import { StarFilled } from "../svgs/StarFilled";
