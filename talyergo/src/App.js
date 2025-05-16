@@ -1,4 +1,5 @@
 import './App.css';
+import { ShopsProvider } from './components/ShopsContext.js';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Home } from './components/Home.js';
 import { PrimaryHeader } from './components/PrimaryHeader.js';
