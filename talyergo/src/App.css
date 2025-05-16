@@ -244,6 +244,11 @@ button a{
 }
 /* Main - Map Section */
 
+.search-wrapper{
+  display: flex;
+  gap: 1.5rem;
+}
+
 .map-heading{
   max-width: 20ch;
   line-height: normal;
@@ -268,9 +273,27 @@ button a{
 
 .results-wrapper{
   flex-grow: 1;
+  overflow: scroll;
+  height: 500px;
   border: 1px solid var(--clr-neutral-900);
   padding: var(--size-16);
   min-width: clamp(var(--size-8), var(--size-16), var(--size-32));
+}
+
+.results-shops{
+  font-family: var(--ff-general);
+  max-width: 40ch;
+  padding: 1rem 1rem;
+  margin-block: 1rem;
+}
+
+.results-shops:hover{
+  background-color: rgba(128, 128, 128, 0.212);
+  cursor: pointer;
+}
+
+:where(.results-wrapper>:not(:last-child)){
+  border-bottom: 1px solid rgba(0, 0, 0, 0.349);
 }
 
 .map-marker .marker-content{
