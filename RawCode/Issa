@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TalyerGO</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tomorrow&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: 'Tomorrow', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    #map {
+      width: 100%;
+      height: 400px;
+    }
+
+    h2 {
+      padding: 20px;
+      margin: 0;
+      background-color: #fff;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .mechanic {
+      background-color: #10b981;
+      color: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>TalyerGO</h1>
+  </header>
+
+  <div id="map"></div>
+
+  <h2>List of Mechanic Shops</h2>
+
+  <div class="grid" id="mechanicGrid"></div>
+
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const shops = [
+      { name: "Sam's Motor Shop", phone: "0948 949 9444", address: "Zone 4, Concepcion Grande, Naga City", lat: 13.621, lng: 123.183 },
+      { name: "JR Repair Shop", phone: "0912 332 5521", address: "Zone 3, Pili", lat: 13.572, lng: 123.291 },
+      { name: "Majish Auto Repair Shop", address: "Barangay Haring, Canaman", lat: 13.651, lng: 123.182 },
+      { name: "PRANES Auto Repair Shop", address: "Dover Street, City Heights Subdivision, Naga City", lat: 13.622, lng: 123.193 },
+      { name: "St. Domingo Car Repair Shop", phone: "0918 944 8473", address: "Diversion Road, Naga City", lat: 13.625, lng: 123.205 },
+      { name: "Reynalit Auto Repair Shop", address: "San Agustin, Canaman", lat: 13.652, lng: 123.175 },
+      { name: "LA Electrical Auto Repair Shop", address: "San Fernando", lat: 13.568, lng: 123.206 },
+      { name: "JL Habana Tire Supply & Auto Repair Shop", phone: "0963 021 4623", address: "Phil-pan, Maharlika Highway, Naga City", lat: 13.619, lng: 123.181 },
+      { name: "F1 Alliance Car Care Center", phone: "0949 815 5188", address: "Dr 5 LF Bldg2, Naga City", lat: 13.628, lng: 123.195 },
+      { name: "Ongskie Auto Supply", phone: "(054) 473 2818", address: "Roxas Ave, Naga City", lat: 13.619, lng: 123.186 },
+      { name: "Lass Automotive Corporation", phone: "(054) 881 6488", address: "39, Naga City", lat: 13.620, lng: 123.190 },
+      { name: "Nosol Tire Supply", phone: "0908 896 8322", address: "Zone 1 Concepcion Grande, Naga City", lat: 13.618, lng: 123.180 },
+      { name: "Motech - Naga", phone: "0918 272 0463", address: "4400 Roxas Ave, Naga City", lat: 13.622, lng: 123.184 },
+      { name: "Aguila Glass - Naga", phone: "(054) 811 6019", address: "Door C, Benmar Bldg. Concepcion Grande, Naga City", lat: 13.617, lng: 123.179 },
+      { name: "Castrol Car Workshop - JOEL TIRE CAR CHECK CENTER", phone: "0910 644 1751", address: "Diversion Road, Pan-Philippine Hwy, Naga City", lat: 13.624, lng: 123.207 },
+      { name: "Luztech Automotives", phone: "0919 435 2284", address: "Balatas Rd, Naga City", lat: 13.611, lng: 123.184 },
+      { name: "KYX AUTO Repair Shop", phone: "0918 908 9681", address: "Sister Therese, Diversion Road, Naga City", lat: 13.627, lng: 123.200 },
+      { name: "Bong Auto Repair Shop", phone: "0910 122 8851", address: "Concepcion Pequeña, Naga City", lat: 13.614, lng: 123.190 },
+      { name: "Picoo Auto Repair Shop", phone: "0907 002 4592", address: "Pan-Philippine Hwy, Pili", lat: 13.576, lng: 123.295 },
+      { name: "FR Narvaez Motor Repair Shop", address: "Goa", lat: 13.701, lng: 123.492 },
+      { name: "Miraña Automotive Services", address: "Goa", lat: 13.705, lng: 123.494 },
+      { name: "Adce Radiator Repair Shop", address: "Goa", lat: 13.703, lng: 123.493 },
+      { name: "Flores Vulcanizing Shop and Car Wash", address: "Goa", lat: 13.704, lng: 123.495 },
+      { name: "Balsky Auto Repair Shop", address: "Goa", lat: 13.700, lng: 123.491 },
+      { name: "Ironson Auto Shop", address: "Pili", lat: 13.574, lng: 123.292 },
+      { name: "HD-TECH Electronics & Aircon Service Center", phone: "+6354 472-2902", address: "Door 1, PLDC Building, Diversion Road, Naga City", lat: 13.629, lng: 123.206 },
+      { name: "La Germania Service Center – Bicol", address: "Maharlika Highway, Zone 4, Brgy. Palestina, Pili", lat: 13.571, lng: 123.290 },
+    ];
+
+    const map = L.map('map').setView([13.629, 123.185], 10);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    const grid = document.getElementById('mechanicGrid');
+
+    shops.forEach(shop => {
+      const div = document.createElement('div');
+      div.className = 'mechanic';
+      div.innerHTML = `<h3>${shop.name}</h3>
+        ${shop.phone ? `<p><strong>Phone:</strong> ${shop.phone}</p>` : ''}
+        <p><strong>Address:</strong> ${shop.address}</p>`;
+      grid.appendChild(div);
+
+      L.marker([shop.lat, shop.lng]).addTo(map)
+        .bindPopup(`<strong>${shop.name}</strong><br>${shop.address}`);
+    });
+  </script>
+</body>
+</html>
+
