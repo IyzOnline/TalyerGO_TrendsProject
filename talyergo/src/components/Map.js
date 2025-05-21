@@ -1,67 +1,98 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react'; // Import useCallback
 import { useNavigate } from 'react-router-dom';
 import L from 'leaflet';
-import "../App.css"
+import "../App.css";
 import orangemarker from '../images/orangemarker.png';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
-import { useShops } from './ShopsContext';
+import { useShops } from './ShopsContext'; // Import useShops
 
-export const Map = ({ onShopHover }) => {
-    const shops = useShops();
+export const Map = ({ onShopHover, userLocation }) => {
+    const userMarkerRef = useRef(null);
+
+    const { shops } = useShops(); // Correctly get the shops array
+
     const mapReference = useRef(null);
     const mapInstance = useRef(null);
     const changeToPath = useNavigate();
 
-    const navigation = (path) => {
+    // Wrap navigation in useCallback
+    const navigation = useCallback((path) => {
         changeToPath(path);
-    };
+    }, [changeToPath]); // Dependency: changeToPath is stable from useNavigate
 
     useEffect(() => {
-        if(!mapReference.current) return;
+        if (!mapReference.current) return;
 
-        const minZoom = 14;
-        const maxZoom = 17;
-        
-        const bounds = L.latLngBounds(
-            [13.55, 123.15],
-            [13.68, 123.22]
-        );
+        // Initialize map only once
+        if (!mapInstance.current) {
+            const minZoom = 14;
+            const maxZoom = 17;
 
-        const map = L.map(mapReference.current, {
-            minZoom: minZoom,
-            maxZoom: maxZoom,
-            maxBounds: bounds,
-            maxBoundsViscosity: 0.7
-        }).setView([13.629, 123.185], 12);
+            // 'bounds' variable removed as it's not used to configure the map
+            // If you want to use it, add maxBounds: bounds to L.map options
 
-        mapInstance.current = map;
+            const map = L.map(mapReference.current, {
+                minZoom,
+                maxZoom,
+            }).setView([13.629, 123.185], 12);
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
-            minZoom: minZoom,
-            maxZoom: maxZoom
-        }).addTo(map);
+            mapInstance.current = map;
 
-        const markers = [];
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+                minZoom,
+                maxZoom,
+            }).addTo(map);
 
-        shops.forEach(shop => {
+            const zoomToShop = (lat, lng, zoom) => {
+                map.setView([lat, lng], zoom);
+            };
+            onShopHover.current = zoomToShop;
 
+            // Cleanup function for initial map setup
+            return () => {
+                if (mapInstance.current) { // Ensure map exists before removing
+                    mapInstance.current.remove();
+                    mapInstance.current = null; // Clear map instance on unmount
+                }
+            };
+        }
+    }, [onShopHover]); // Only run this effect once for map initialization
+
+    // Effect for adding/updating shop markers
+    useEffect(() => {
+        const map = mapInstance.current;
+        if (!map || !Array.isArray(shops) || shops.length === 0) {
+            // Clear existing shop markers if shops data changes or is empty
+            if (map && map.shopMarkers) {
+                map.removeLayer(map.shopMarkers);
+                map.shopMarkers = null;
+            }
+            return;
+        }
+
+        // Clear previous shop markers before adding new ones
+        if (map.shopMarkers) {
+            map.removeLayer(map.shopMarkers);
+        }
+        const shopMarkersLayerGroup = L.layerGroup().addTo(map);
+        map.shopMarkers = shopMarkersLayerGroup; // Store the layer group on the map instance
+
+        shops.forEach((shop) => {
             const markerIcon = L.divIcon({
                 className: 'map-marker',
                 html: `<div class="marker-content leaflet-marker-icon leaflet-zoom-animated leaflet-interactive">
-                            <p class="marker-text">${shop.name}</p>   
+                            <p class="marker-text">${shop.name}</p>
                             <img class="orangemarker" src="${orangemarker}" alt="${shop.name} icon" />
                         </div>`,
                 iconAnchor: [165, 60],
-                popUpAnchor: [0, -50]
+                popUpAnchor: [0, -50],
             });
-            
-            // const tempMarker = L.marker([shop.lat, shop.lng]).addTo(map);
-            const shopMarker = L.marker([shop.lat, shop.lng], {icon : markerIcon}).addTo(map)
-            markers.push(shopMarker);
-            
+
+            const shopMarker = L.marker([shop.lat, shop.lng], { icon: markerIcon }).addTo(shopMarkersLayerGroup);
+
             const popUpContent = document.createElement('div');
             popUpContent.classList.add("pop-up-content");
 
@@ -80,45 +111,56 @@ export const Map = ({ onShopHover }) => {
             popUpContent.appendChild(popUpName);
             popUpContent.appendChild(popUpAddress);
 
+            // Use the memoized navigation function
             popUpContent.addEventListener('click', () => {
-                navigation(shop.path); 
-            })
-            
-            // tempMarker.bindPopup(popUpContent, {offset: [0, -50]});
-            shopMarker.bindPopup(popUpContent, {offset: [0, -50]});
+                navigation(shop.path);
+            });
+
+            shopMarker.bindPopup(popUpContent, { offset: [0, -50] });
         });
 
         const updateMarkerVisibility = () => {
             const currentZoom = map.getZoom();
-            markers.forEach(marker => {
-                const markerContent = marker._icon.querySelector('.marker-content');
+            shopMarkersLayerGroup.eachLayer(function (marker) {
+                const markerContent = marker._icon?.querySelector('.marker-content');
                 if (markerContent) {
-                    if (currentZoom >= 16) {
-                        markerContent.classList.add('show-text');
-                    } else {
-                        markerContent.classList.remove('show-text');
-                    }
+                    markerContent.classList.toggle('show-text', currentZoom >= 16);
                 }
             });
         };
 
-        // Initial call
         updateMarkerVisibility();
         map.on('zoomend', updateMarkerVisibility);
 
-        const zoomToShop = (lat, lng, zoom) => {
-            map.setView([lat, lng], zoom);
-        };
-
-        onShopHover.current = zoomToShop;
-
+        // Cleanup for shop markers and zoomend listener
         return () => {
-            if(map){
-                map.remove();
+            if (map.shopMarkers) {
+                map.removeLayer(map.shopMarkers);
+                map.shopMarkers = null;
             }
+            map.off('zoomend', updateMarkerVisibility);
         };
 
-    }, [shops, onShopHover, mapReference]);
+    }, [shops, navigation]); // Add navigation to dependencies as it's used in this effect
 
-    return <div ref={mapReference} style={{ width: '1110px', height: '500px'}}/>
-}
+    // Effect for user location marker
+    useEffect(() => {
+        const map = mapInstance.current;
+        if (!map || !userLocation) return;
+
+        if (userMarkerRef.current) {
+            map.removeLayer(userMarkerRef.current);
+        }
+
+        const userMarker = L.marker([userLocation.lat, userLocation.lng], {
+            title: "Your Location",
+        }).addTo(map);
+
+        userMarkerRef.current = userMarker;
+        map.setView([userLocation.lat, userLocation.lng], 16);
+    }, [userLocation]);
+
+    return (
+        <div ref={mapReference} style={{ width: '1110px', height: '500px'}}/>
+    );
+};

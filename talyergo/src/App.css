@@ -163,6 +163,10 @@ select {
 
 /* Global Styling */
 
+:where(body){
+  font-family: var(--ff-general);
+}
+
 a {
   text-decoration: none;
   color: black;
@@ -176,7 +180,14 @@ button{
   border-radius: var(--size-16);
   padding: var(--size-8) var(--size-16);
   background-color: var(--clr-accent-400);
-  box-shadow: 0 1em 1em -1em var(--clr-accent-500)
+  box-shadow: 0 1em 1em -1em var(--clr-accent-500);
+  color: var(--clr-neutral-100);
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover{
+  background-color: var(--clr-accent-300);
+  transition: background-color 0.2s ease-in-out;
 }
 
 button a{
@@ -203,6 +214,10 @@ button a{
 .ph-buttons{
   display: flex;
   gap: 10px;
+}
+
+.logout-btn{
+  margin-left: 87px;
 }
 
 /* Main */
@@ -244,6 +259,13 @@ button a{
 }
 /* Main - Map Section */
 
+.search-input{
+  width: 40%;
+  margin-top: 1rem;
+  padding: 1rem 2rem;
+  font-family: var(--ff-general);
+}
+
 .search-wrapper{
   display: flex;
   gap: 1.5rem;
@@ -264,6 +286,7 @@ button a{
 
 .btn-map-wrapper{
   display: flex;
+  color: var(--clr-neutral-100);
   gap: clamp(var(--size-8), var(--size-16), var(--size-32));
 }
 
@@ -604,12 +627,51 @@ button a{
 
 .shop-content{
   display: flex;
+  justify-content: center;
+  gap: calc(5%);
+  color: var(--clr-neutral-100);
+  font-family: var(--ff-general) ;
 }
 
 .shop-info{
   width: 45%;
   border: 1px solid black;
+  background-color: var(--clr-primary-400);
   height: 50vh;
+  padding: 1rem 2rem;
+  border-radius: 2rem;
+}
+
+.info-container > :not(:first-child){
+  margin-top: 1rem;
+}
+
+.info-container h2{
+  font-size: 1.5rem;
+}
+
+/* About Page */
+.about-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.about-content{
+  width: 70%;
+}
+
+.about-heading{
+  font-family: var(--ff-primary);
+  font-size: var(--fs-primary-heading);
+}
+
+.about-paras{
+  font-family: var(--ff-general);
+}
+
+.about-paras > :not(:first-child){
+  margin-top: 1.5rem;
 }
 
 /* Utility Classes */
@@ -674,4 +736,8 @@ button a{
 
 .clr-accent-300{
   color: var(--clr-accent-300);
+}
+
+.inner-info > :not(:first-child){
+  padding-left: 3rem;
 }
